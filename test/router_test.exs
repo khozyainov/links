@@ -1,5 +1,5 @@
 defmodule Example.RouterTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   use Plug.Test
   alias Links.Router
   import Mox

@@ -4,12 +4,7 @@ defmodule Links.Application do
   use Application
 
   def start(_type, _args) do
-    redis_uri = Application.get_env(:links, :redis_uri)
-
-    children = [
-      {Redix, {redis_uri, [name: :redix]}},
-      Links.Endpoint
-    ]
+    children = Application.get_env(:links, :children)
 
     opts = [strategy: :one_for_one, name: Links.Supervisor]
     Supervisor.start_link(children, opts)
